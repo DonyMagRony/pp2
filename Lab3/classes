@@ -1,0 +1,73 @@
+#Task 1 
+class myclass:
+    def __init__(self):
+        self.string=""
+    def getString(self):
+        self.string= input("write something:")
+    def printString(self):
+        print(self.string)
+
+m=myclass()
+m.getString()
+m.printString()
+
+#////////////////////////////////////////////////////////////////////////////////////////////////////
+#Task2
+ 
+class shape():
+    def area():
+        print (0)
+class square(shape):
+    def __init__(self,length):
+        self.length = length
+    def area(self):
+        print(self.length*self.length)
+class rectangle(shape):
+    def __init__(self,length ,width):
+        self.length =length 
+        self.width=width
+    def area(self):
+        print(self.length*self.width)
+a=rectangle(15,20)
+a.area()
+
+#///////////////////////////////////////////////////////////////////////////////////////////
+#Task 3
+
+import math 
+class point:
+    def __init__(self,x,y):
+        self.x=x
+        self.y=y
+    def change(self,newx,newy):
+        self.x=newx
+        self.y=newy
+    def dist(self,point):
+        dist=math.sqrt(pow((point.x-self.x),2)+pow((point.y-self.y),2))
+        print(dist)
+a=point(0,0)
+b=point(2,0)
+a.change(1,0)
+a.dist(b)
+#////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#Task 4\
+class Account:
+    def __init__(self,owner,balance):
+        self.owner=owner
+        self.balance=balance
+    def deposit(self,money):
+        self.balance+=money
+    def withdraw(self,finance):
+        if(finance>self.balance):
+            print("error")
+        else:
+            self.balance-=finance
+a=Account("asan",1000)
+b=Account("asan",2000)
+#//////////////////////////////////////////////////////////////////
+#Task5
+nums=[1,2,3,4,5,6,7,8,9,10,1]
+nums=list(filter(lambda x: x!=1,nums))
+is_prime = lambda number: all( number%i != 0 for i in range(2, int(number**.5)+1) )
+primes=list(filter(is_prime,nums))
+print(primes)
