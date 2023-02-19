@@ -1,0 +1,26 @@
+import math
+##Task 1
+#n=int(input())
+#print(round(math.radians(n),6))
+
+
+##Task 2
+#a=5
+#b=5
+#c=6
+#area=(a*(b+c)/2)
+#print(round(area,2))
+
+
+##Task 3
+#from math import tan, pi
+#n=int(input("number of sides: "))
+#s=float(input("length of a side: "))
+#area=n*(s**2)/(4*tan(pi/n))
+#print(round(area))
+
+
+##Task 4
+#n=float(input("length: "))
+#s=float(input("height: "))
+#print(round(n/s,1))
