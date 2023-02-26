@@ -1,0 +1,94 @@
+import re
+#import codecs
+#with codecs.open('row.txt', "r", "utf_8_sig") as f:
+#    for i in re.findall(r'^a(b*)$',f.read(),re.DOTALL):
+#    print(i)
+
+
+
+#task1
+def mth(t):
+        if re.search(r'^a(b*)$',t):
+                return 'match!'
+        else:
+                return('No match')
+print(mth("ac"))
+print(mth("abc"))
+print(mth("a"))
+print(mth("ab"))
+print(mth("abbbbb"))
+
+
+#task2         
+import re
+def mth(t):
+        if re.search(r'ab{2,3}$',t):
+                return 'match!'
+        else:
+                return('No match')
+print(mth("ab"))
+print(mth("aabbbbbc"))
+
+
+#task3
+import re
+def mth(text):
+        if re.search(r'^[a-z]+_[a-z]+$',  text):
+                return 'match!'
+        else:
+                return('No match!')
+print(mth("a_B"))
+print(mth("aabasd_bbc"))
+
+
+#task 4
+import re
+def mth(text):
+        if re.search(r'^[A-Z]+_[a-z]+$',  text):
+                return 'match!'
+        else:
+                return('No match!')
+print(mth("a_B"))
+print(mth("aabasd_bbc"))
+
+
+#task 5
+import re
+def mth(text):
+        if re.search(r'a.*?b$',  text):
+                return 'match!'
+        else:
+                return('No match!')
+print(mth("a213b"))
+print(mth())
+
+
+#task 6
+txt = 'hello,world...'
+print(re.sub("[ ,.]", ":", txt))
+
+
+#task 7
+def camel(match):
+    return match.group(1) + match.group(2).upper()
+txt = "Lorem_ipsum_dolor si_amet,_consectetur_adipiscing_elit.".split()
+results = [re.sub(r"(.*?)_([a-zA-Z])", camel, w) for w in txt]
+print(results)
+
+
+#task 8
+txt = "LoremIpsumDolorSiAmet"
+print(re.findall('[A-Z][^A-Z]*', txt))
+
+
+#task 9
+txt = "LoremIpsumDolorSiAmet"
+print(re.sub(r"(\w)([A-Z])", r"\1 \2", txt))
+
+
+#Task 10
+def snake(txt):
+        str1= re.sub('(.)([A-Z][a-z]+)', r'\1_\2', txt)
+        return re.sub('([a-z])([A-Z])', r'\1_\2', str1).lower()
+
+print(snake('LoremIpsumDolorSiAmet'))
