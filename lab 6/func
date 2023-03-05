@@ -1,0 +1,51 @@
+#Task 1
+def multiply(n):  
+    s = 1
+    for i in n:
+        s*= i  
+    return s 
+print(multiply((8, 2, 3, -1, 7)))
+
+
+#Task 2
+def test(s):
+    d={"u":0, "l":0}
+    for i in s:
+        if i.isupper():
+           d["u"]+=1
+        elif i.islower():
+           d["l"]+=1
+        else:
+           pass
+    print ("upper ", d["u"])
+    print ("lower ", d["l"])
+
+test('Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit')
+
+
+#Task 3
+def ispalindrome(str):
+	left = 0
+	right = len(str) - 1
+	
+	while right >= left:
+		if not str[left] == str[right]:
+			return False
+		left += 1
+		right -= 1
+	return True
+print(ispalindrome('atta')) 
+
+
+#Task 4
+import time 
+import math
+def root(fn, a, ms):
+  time.sleep(ms / 1000)
+  return fn(a)
+print(root(lambda x: math.sqrt(x), 25100, 2123 ))
+
+
+#Task 5
+tuple=[True,True,True]
+print(all(tuple))
