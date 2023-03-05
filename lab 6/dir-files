@@ -1,0 +1,72 @@
+
+import os
+import string
+path = 'C:\\Users\\daniy\\OneDrive\\Documents\\PP2'
+
+#task 1
+print("Only directories:")
+print([ name for name in os.listdir(path) if os.path.isdir(os.path.join(path, name)) ])
+print("\nOnly files:")
+print([ name for name in os.listdir(path) if not os.path.isdir(os.path.join(path, name)) ])
+print("\nAll directories and files :")
+print([ name for name in os.listdir(path)])
+
+
+#Task 2
+print('Exist:', os.access(path, os.F_OK))
+
+
+#Task 3
+print('Exist:', os.access(path, os.F_OK))
+print('Readable:', os.access(path, os.R_OK))
+print('Writable:', os.access(path, os.W_OK))
+print('Executable:', os.access('c:\\Users\\Public\\C programming library.docx', os.X_OK))
+
+
+
+#Task 4
+path = 'C:\\Users\\daniy\\OneDrive\\Documents\\PP2\\lie.txt'
+print(os.path.exists(path))
+path = 'C:\\Users\\daniy\\OneDrive\\Documents\\PP2\\row.txt'
+print(os.path.exists(path))
+print("\nFile name of the path:")
+print(os.path.basename(path))
+print("\nDir name of the path:")
+print(os.path.dirname(path))
+
+
+#Task5
+f=open('row.txt','r',encoding="utf-8")
+for c,i in enumerate(f):
+        c+=1
+print(c)
+
+
+#Task6
+a=['a','b','c','d','e']
+f=open('work.txt','w',encoding="utf-8")
+for i in a:
+    f.write(i + ' ')
+f = open('work.txt','r', encoding="utf-8")
+print(f.read())
+
+
+#Task 7
+if not os.path.exists("letters"):
+   os.makedirs("letters")
+for letter in string.ascii_uppercase:
+   with open(letter + ".txt", "w",encoding="utf-8") as f:
+       f.writelines(letter)
+
+
+#Task 8
+f=open('row.txt','r',encoding='utf-8')
+s=open('work.txt','a',encoding='utf-8')
+for line in f:
+    s.write(line)
+
+
+#Task 9
+path = 'C:\\Users\\daniy\\OneDrive\\Documents\\PP2\\d.txt'
+os.access(path,os.F_OK)
+os.remove(path)
