@@ -1,0 +1,73 @@
+import pygame
+import time
+import math
+
+pygame.init()
+
+clock_radius = 150
+clock_center = (250, 250)
+arrow_length = 120
+arrow_width = 8
+arrow_color = (0, 0, 0)
+
+screen_width = 500
+screen_height = 500
+screen = pygame.display.set_mode((screen_width, screen_height))
+
+arrow_img = pygame.image.load("arrow.png")
+
+def draw_arrows():
+    seconds = time.localtime().tm_sec
+    minutes = time.localtime().tm_min
+    
+    sec_angle = seconds * 6
+    min_angle = (minutes * 6) + (seconds * 0.1)
+    
+    sec_arrow = pygame.transform.rotate(arrow_img, -sec_angle)
+    min_arrow = pygame.transform.rotate(arrow_img, -min_angle)
+    
+    sec_arrow_rect = sec_arrow.get_rect()
+    sec_arrow_rect.center = clock_center
+    
+    min_arrow_rect = min_arrow.get_rect()
+    min_arrow_rect.center = clock_center
+    
+    pygame.draw.line(screen, arrow_color, sec_arrow_rect.center, (sec_arrow_rect.center[0], sec_arrow_rect.center[1] - arrow_length), arrow_width)
+    pygame.draw.line(screen, arrow_color, min_arrow_rect.center, (min_arrow_rect.center[0], min_arrow_rect.center[1] - arrow_length), arrow_width)
+    
+    screen.blit(sec_arrow, sec_arrow_rect)
+    screen.blit(min_arrow, min_arrow_rect)
+
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+    
+    screen.fill((255, 255, 255))
+    pygame.draw.circle(screen, (0, 0, 0), clock_center, clock_radius, 2)
+    for i in range(60):
+        angle = i * 6
+        if i % 5 == 0:
+            length = 10
+        else:
+            length = 5
+        x = clock_center[0] + (clock_radius - length) * math.cos(math.radians(angle))
+        y = clock_center[1] - (clock_radius - length) * math.sin(math.radians(angle))
+        pygame.draw.line(screen, (0, 0, 0), (x, y), (clock_center[0], clock_center[1]), 2)
+    
+    draw_arrows()
+    pygame.display.update()
+    
+    time.sleep(1)
+    
+    screen.fill((255, 255, 255))
+    pygame.draw.circle(screen, (0, 0, 0), clock_center, clock_radius, 2)
+    for i in range(60):
+        angle = i * 6
+        if i % 5 == 0:
+            length = 10
+        else:
+            length = 5
+        x = clock_center[0] + (clock_radius - length) * math.cos(math.radians(angle))
+       
