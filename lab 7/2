@@ -1,0 +1,49 @@
+import pygame
+import os
+
+pygame.init()
+
+screen_width = 640
+screen_height = 480
+screen = pygame.display.set_mode((screen_width, screen_height))
+
+font = pygame.font.Font(None, 36)
+
+music_files = ['music1.mp3', 'music2.mp3', 'music3.mp3']
+current_track = 0
+paused = True
+
+
+clock = pygame.time.Clock()
+game_over = False
+
+while not game_over:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            game_over = True
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_p:
+                if paused:
+                    pygame.mixer.music.load(music_files[current_track])
+                    pygame.mixer.music.play()
+                else:
+                    pygame.mixer.music.pause()
+                    paused = True
+            elif event.key == pygame.K_SPACE:
+                pygame.mixer.music.stop()
+                paused = True
+            elif event.key == pygame.K_RIGHT:
+                current_track = (current_track + 1) % len(music_files)
+                pygame.mixer.music.load(music_files[current_track])
+                pygame.mixer.music.play()
+            elif event.key == pygame.K_LEFT:
+                current_track = (current_track - 1) % len(music_files)
+                pygame.mixer.music.load(music_files[current_track])
+                pygame.mixer.music.play()
+
+    screen.fill((255, 255, 255))
+    label = font.render('Press P to play ,Space to stop,<> to choose', True, (0, 0, 0))
+    screen.blit(label, (20, 20))
+    pygame.display.flip()
+    clock.tick(20)
+pygame.quit()
